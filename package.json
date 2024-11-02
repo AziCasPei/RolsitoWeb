@@ -9,8 +9,7 @@
     "start": "webpack serve",
     "clean": "rimraf dist",
     "build": "webpack --mode production",
-    "dev": "webpack --mode development",
-    "update": "git switch main && git pull && git switch production && git checkout main -- dist && git add dist && git commit -m \"Sincronizar carpeta 'dist' desde la rama 'main'\" && git push"
+    "dev": "webpack --mode development"
   },
   "keywords": [
     "RolsitoBot"
