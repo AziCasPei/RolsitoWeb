@@ -153,7 +153,7 @@ export default {
         port: 3000,
         open: true,
         historyApiFallback: {
-            index: '/introduccion.html'
+            index: '/index.html'
         }
     }
 };
