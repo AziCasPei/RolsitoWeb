@@ -511,6 +511,7 @@ code {
 screen and (max-height: 555px) {
   html {
     scroll-padding-top: 100px;
+    scroll-snap-type: none; /*KAROS*/
   }
 
   h1 {
@@ -570,6 +571,7 @@ screen and (max-height: 555px) {
     scroll-snap-align: none;
     align-items: center;
     height: auto;
+    overflow: hidden; /*KAROS*/
   }
 
   .main__text-content {

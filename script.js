@@ -9,7 +9,7 @@ menuToggle.addEventListener('change', function () {
 const MAX_WIDTH = 1040;
 const MAX_HEIGHT = 555;
 const TITLE_SPEED_MS = 200;
-const RELOAD_PAGE_H = 24;
+const RELOAD_PAGE_H = 2;
 
 function changeStyle(block, opacity, transform) {
     block.style.transition = 'opacity 1.5s, transform 1.5s';
