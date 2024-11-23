@@ -239,8 +239,8 @@ code {
 .main__article {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 75dvh);
-  height: 75dvh;
+  grid-template-rows: repeat(2, 75vh);
+  height: 75vh;
   gap: 5dvh;
   scroll-snap-align: center;
   scroll-margin-top: 130px;
@@ -267,6 +267,12 @@ code {
   justify-self: end;
 }
 
+.main__text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .main__heading {
   margin-top: 0;
   margin-bottom: 20px;
@@ -274,15 +280,6 @@ code {
 
 .main__heading__premium {
   color: rgb(255, 183, 0);
-}
-
-.main__image--start {
-  align-self: start;
-  margin: 0;
-}
-
-.main__text-content--center {
-  align-self: center;
 }
 
 .main__text-content--escape {
@@ -571,7 +568,7 @@ screen and (max-height: 555px) {
     scroll-snap-align: none;
     align-items: center;
     height: auto;
-    overflow: hidden; /*KAROS*/
+    overflow: hidden;
   }
 
   .main__text-content {
