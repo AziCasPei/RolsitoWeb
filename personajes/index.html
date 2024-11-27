@@ -6,36 +6,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aprende a registrar, editar y administrar personajes en Discord con RolsitoBot. Guía completa para crear y gestionar fichas de personaje.">
-    <meta name="robots" content="noarchive">
     <meta property="og:title" content="RolsitoBot - Personajes"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://lh3.googleusercontent.com/pw/AP1GczO2Z4R-36jz70Qt5cJcp90LCoe1wEFaOQbmglczr3hJ8WHDvTEvZJUZnUUUuG6X4bFNskSwqXMAalMEs0Hy_1r1qdky1PtDbrXA9WE7H_d_MdDbfEcLn-FOaTO2PjhMhTiCJKqCoycvXqkaucFuqYj2=w886-h886-s-no?authuser=0"/>
     <meta property="og:description" content="Registra y gestiona múltiples personajes en tu servidor de rol de Discord con RolsitoBot. Mejora tu experiencia de roleo con herramientas avanzadas y personalizadas.">
     <meta property="og:site_name" content="RolsitoBot"/>
     <meta property="og:locale" content="es_ES"/>
-    <meta property="og:url" content="https://azicaspei.github.io/RolsitoWeb/"/>
+    <meta property="og:url" content="https://rolsitobot.es/index.html"/>
     <title>RolsitoBot - Crea y Administra Personajes en Discord</title>
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="icon" type="image/png" href="./Imagenes/logoRolsito.png">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" type="image/png" href="/Imagenes/logoRolsito.png">
 </head>
 
 <body>
     <header class="header">
         <div class="header__container">
-            <h1 class="header__title"><a href="./personajes.html" class="header__title-link"><img class="header__logo"
-                src="./Imagenes/logoRolsito.png" alt="RolsitoBot"></a></h1>
+            <span class="header__title"><a href="./" class="header__title-link"><img class="header__logo"
+                src="/Imagenes/logoRolsito.png" alt="RolsitoBot"></a></span>
 
             <input type="checkbox" id="menu-toggle" class="header__menu-toggle" />
             <label for="menu-toggle" class="header__menu-icon">☰</label>
 
             <nav class="header__nav">
                 <ul class="header__menu">
-                    <li class="header__menu-item"><a href="./index.html" class="header__menu-link">Introducción</a></li>
-                    <li class="header__menu-item"><a href="./personajes.html" class="header__menu-link">Personajes</a></li>
-                    <li class="header__menu-item"><a href="./objetos.html" class="header__menu-link">Objetos</a></li>
-                    <li class="header__menu-item"><a href="./economía.html" class="header__menu-link">Economía</a></li>
-                    <li class="header__menu-item"><a href="./dados.html" class="header__menu-link">Dados</a></li>
-                    <li class="header__menu-item"><a href="./otros.html" class="header__menu-link">Otros</a></li>
+                    <li class="header__menu-item"><a href="/" class="header__menu-link">Introducción</a></li>
+                    <li class="header__menu-item"><a href="/personajes/" class="header__menu-link">Personajes</a></li>
+                    <li class="header__menu-item"><a href="/objetos/" class="header__menu-link">Objetos</a></li>
+                    <li class="header__menu-item"><a href="/economia/" class="header__menu-link">Economía</a></li>
+                    <li class="header__menu-item"><a href="/dados/" class="header__menu-link">Dados</a></li>
+                    <li class="header__menu-item"><a href="/otros/" class="header__menu-link">Otros</a></li>
                 </ul>
             </nav>
         </div>
@@ -70,7 +69,7 @@
                     En el campo "objetos_solicitados" podemos introducir dinero y objetos que hayan en el servidor bajo el siguiente formato: <code>Espada, 3*Hierro, 2000</code>. Si la ficha es aprobada, nuestro personaje recibirá ese dinero y esos objetos.<br>
                     ¡Listo! al enviar el mensaje ya tendríamos una ficha de personaje. Pero para poder usarla aún necesitamos que alguien con permisos la <a href="#revisar-personajes">apruebe</a>.</p>
                 </div>
-                <img loading="lazy" src="./Imagenes/personajes1.webp" alt="Guía sobre la creación de personajes en Discord con RolsitoBot usando /registrar" class="main__image">
+                <img loading="lazy" src="/Imagenes/personajes1.webp" alt="Guía sobre la creación de personajes en Discord con RolsitoBot usando /registrar" class="main__image">
             </article>
 
             <article  id="edicion-personajes" class="main__article">
@@ -83,7 +82,7 @@
                     El campo "cambiar_nombre" nos permite, introduciendo un nombre nuevo, cambiar el nombre del personaje.
                 </p>
                 </div>
-                <img loading="lazy" src="./Imagenes/personajes2.webp" alt="Tutorial de edición de personajes en Discord con RolsitoBot usando /registrar" class="main__image">
+                <img loading="lazy" src="/Imagenes/personajes2.webp" alt="Tutorial de edición de personajes en Discord con RolsitoBot usando /registrar" class="main__image">
             </article>
             
             <article id="ejemplo-registrar" class="main__article">
@@ -91,7 +90,7 @@
                     <h2 class="main__heading">Ejemplo /registrar</h2>
                     <p class="main__paragraph">Aquí tenemos la imagen de cómo quedaría el comando para registrar un personaje más o menos completo. Aún hay campos que se podrían añadir.</p>
                 </div>
-                <img loading="lazy" src="./Imagenes/personajes3.webp" alt="Ejemplo completo del registro de una ficha de personaje con RolsitoBot en Discord" class="main__image main__image">
+                <img loading="lazy" src="/Imagenes/personajes3.webp" alt="Ejemplo completo del registro de una ficha de personaje con RolsitoBot en Discord" class="main__image main__image">
             </article>
 
             <article id="ver-personajes" class="main__article">
@@ -99,9 +98,9 @@
                     <h2 class="main__heading">Ver personajes: /personajes</h2>
                     <p class="main__paragraph">Si deseamos ver todos los <strong>personajes</strong> que hemos creado en un servidor, usamos el comando <code>/personajes</code> sin rellenar nada más. Nos mostrará el nombre, si se encuentra en revisión o aprobado y si está activo o no.<br>
                     Y si queremos ver la ficha de un personaje en concreto, usamos <code>/personaje</code> e introducimos su nombre o clave en <code>identificador</code>.<br>
-                    Usando los botones bajo la ficha de personaje podemos eliminar la ficha o <b>activar</b> o desactivarla para rolear con él. No obstante, para poder rolear con un personaje debe estar <b><a href="./personajes.html#revisar-personajes" class="text--wave">aprobado</a></b> por alguien con permisos.</p>
+                    Usando los botones bajo la ficha de personaje podemos eliminar la ficha o <b>activar</b> o desactivarla para rolear con él. No obstante, para poder rolear con un personaje debe estar <b><a href="/personajes/index.html#revisar-personajes" class="text--wave">aprobado</a></b> por alguien con permisos.</p>
                 </div>
-                <img loading="lazy" src="./Imagenes/personajes4.webp" alt="Ficha de personaje en Discord con RolsitoBot" class="main__image">
+                <img loading="lazy" src="/Imagenes/personajes4.webp" alt="Ficha de personaje en Discord con RolsitoBot" class="main__image">
             </article>
 
             <article id="trucos-personajes" class="main__article">
@@ -111,7 +110,7 @@
                     Nótese que al activar una ficha, si esta tiene atributos con el mismo nombre que roles del servidor, RolsitoBot concederá tales roles al usuario automáticamente. Pero para que esto pueda ocurrir, el rol de RolsitBot debe estar por encima en la jerarquía de roles.<br>
                     ¡Podemos registrar todos los personajes que queramos!</p>
                 </div>
-                <img src="./Imagenes/personajes5.webp" alt="Trucos personajes." class="main__image">
+                <img src="/Imagenes/personajes5.webp" alt="Trucos personajes." class="main__image">
             </article>
 
             <article id="revisar-personajes" class="main__article">
@@ -121,7 +120,7 @@
                     Si nos deniegan una ficha, esta no se elimina. Sigue estando disponible para su edición y revisión.<br>
                     Si existen dos personajes con el mismo nombre, podemos indicar a cual nos referimos introduciendo su usuario dueño.</p>
                 </div>
-                <img src="./Imagenes/personajes6.webp" alt="Revisando fichas." class="main__image">
+                <img src="/Imagenes/personajes6.webp" alt="Revisando fichas." class="main__image">
             </article>
             
             <article id="personalizar-ficha" class="main__article">
@@ -130,7 +129,7 @@
                     <p class="main__paragraph">Las fichas tienen por defecto un campo de nombre, de trasfondo y de la última localización (canal) donde se ha roleado con el personaje. Pero podemos añadir campos personalizados con el comando <code>/ficha</code>. Por ejemplo, <strong class="main__text-content--escape">personalidad</strong> o <strong class="main__text-content--escape">apariencia</strong>.<br>
                     Además de los campos personalizables, las fichas mostrarán los atributos numéricos y textuales del personaje (si han sido configurados).</p>
                 </div>
-                <img src="./Imagenes/personajes7.webp" alt="Campos personalizados de la ficha." class="main__image">
+                <img src="/Imagenes/personajes7.webp" alt="Campos personalizados de la ficha." class="main__image">
             </article>
 
             <article id="atributos-personajes" class="main__article">
@@ -141,7 +140,7 @@
                     Hay atributos numéricos y textuales. Los primeros son autoexplicativos, mientras que los segundos sirven para que el usuario tenga que elegir uno entre varios. Por ejemplo, en el atributo <code>clase</code> el usuario eligirá entre <code>pícaro</code>, <code>guerrero</code> o <code>mago</code>.<br>
                     Dado que sólo hay 5 casillas de atributos, existen otras 5 casillas de atributos que se pueden desbloquear con RolsitoBot Premium. Funcionan de misma manera que los atributos normales.</p>
                 </div>
-                <img src="./Imagenes/personajes8.webp" alt="Atributos del personaje." class="main__image">
+                <img src="/Imagenes/personajes8.webp" alt="Atributos del personaje." class="main__image">
             </article>
 
             <article id="alterar-atributos" class="main__article">
@@ -149,16 +148,16 @@
                     <h2 class="main__heading">Alterar atributos: /alterar</h2>
                     <p class="main__paragraph">¿Un jugador se ha ganado un rasgo que le sube los atributos en tu rol? Puedes aumentar o disminuir los atributos numéricos de un personaje con el comando restringido <code>/alterar</code>. También puedes cambiar atributos textuales.</p>
                 </div>
-                <img src="./Imagenes/personajes9.webp" alt="Alterando atributos." class="main__image">
+                <img src="/Imagenes/personajes9.webp" alt="Alterando atributos." class="main__image">
             </article>
 
             <article id="consultar-atributos" class="main__article">
                 <div class="main__text-content main__text-content">
                     <h2 class="main__heading">Consultar atributos: /consultar</h2>
                     <p class="main__paragraph"><strong>RolsitoBot</strong> nos permite <strong>consultar</strong> rápidamente todos los personajes con un determinado atributo textual. Para eso usamos <code>/consultar</code> e introducimos el atributo que queremos consultar.<br>
-                    Si no queremos que todos los usuarios puedan usar este comando y ver las fichas y atributos de otros usuarios, podemos <a href="./index.html#restringir-comandos" class="text--wave">restringirlo</a>.</p>
+                    Si no queremos que todos los usuarios puedan usar este comando y ver las fichas y atributos de otros usuarios, podemos <a href="/index.html#restringir-comandos" class="text--wave">restringirlo</a>.</p>
                 </div>
-                <img src="./Imagenes/personajes10.webp" alt="Consultando atributos." class="main__image">
+                <img src="/Imagenes/personajes10.webp" alt="Consultando atributos." class="main__image">
             </article>
 
             <article id="transferir-personaje" class="main__article">
@@ -168,7 +167,7 @@
                     Introduce el nombre o la clave del personaje en el comando /revisar y encontrarás un botón de <b>Transferir</b>. Luego podrás elegir a quién lo transfieres.<br>
                     <b>¡Atención!</b> Puedes transferir tus personajes a RolsitBot, que actúa como <i>banco de personajes</i>. Otros usuarios con permiso podrán tomar personajes del banco.</p>
                 </div>
-                <img src="./Imagenes/personajes11.webp" alt="Transferiendo personaje." class="main__image">
+                <img src="/Imagenes/personajes11.webp" alt="Transferiendo personaje." class="main__image">
             </article>
 
             <article id="rol-automatico" class="main__article">
@@ -179,7 +178,7 @@
                     Se puede hablar <strong>offrol</strong> en los canales marcados como <code>/rol</code> escribiendo <code>//</code> o <code>((</code> al principio o al final del mensaje. Por ejemplo: <code>//lo siento, me tengo que ir</code>.<br>
                     Se pueden borrar todos los mensajes offrol de un canal o servidor con el comando <code>/purgar</code>.</p>
                 </div>
-                <img src="./Imagenes/personajes12.webp" alt="Rol automático." class="main__image">
+                <img src="/Imagenes/personajes12.webp" alt="Rol automático." class="main__image">
             </article>
             
         </section>
@@ -193,20 +192,20 @@
                     <li class="footer__menu-item">
                         <a href="https://discord.gg/r8r7CfT93h" class="footer__menu-link" title="Visita nuestro Discord"
                             target="_blank">
-                            <img class="footer__menu-logo" src="./Imagenes/logoDiscord.png" alt="Discord">
+                            <img class="footer__menu-logo" src="/Imagenes/logoDiscord.png" alt="Discord">
                         </a>
                     </li>
                     <li class="footer__menu-item">
                         <a href="https://www.youtube.com/@RolsitoBot" class="footer__menu-link"
                             title="Visita nuestro canal de YouTube" target="_blank">
-                            <img class="footer__menu-logo" src="./Imagenes/logoYoutube.png" alt="YouTube">
+                            <img class="footer__menu-logo" src="/Imagenes/logoYoutube.png" alt="YouTube">
                         </a>
                     </li>
                     <li class="footer__menu-item">
                         <a href="https://discord.com/api/oauth2/authorize?client_id=1008731076119769199&permissions=8&scope=bot"
                             class="footer__menu-link" title="Invita a nuestro bot a tu servidor de Discord"
                             target="_blank">
-                            <img class="footer__menu-logo" src="./Imagenes/logoRolsito.png" alt="Bot">
+                            <img class="footer__menu-logo" src="/Imagenes/logoRolsito.png" alt="Bot">
                         </a>
                     </li>
                 </ul>
@@ -214,7 +213,7 @@
         </div>
     </footer>
 
-    <script src="./script.js"></script>
+    <script src="/script.js"></script>
 
 </body>
 

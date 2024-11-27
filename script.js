@@ -1,112 +1,143 @@
-var menuToggle = document.getElementById('menu-toggle');
-menuToggle.addEventListener('change', function () {
-    if (menuToggle.checked)
-        document.body.style.overflow = 'hidden';
-    else
-        document.body.style.overflow = '';
-});
-
+// Constantes de configuración
 const MAX_WIDTH = 1040;
 const MAX_HEIGHT = 555;
 const TITLE_SPEED_MS = 200;
 const RELOAD_PAGE_H = 2;
+const HEADING_INITIAL_FONT_SIZE = 46;
+const PARAGRAPH_INITIAL_FONT_SIZE = 28;
 
+// Funciones auxiliares
 function changeStyle(block, opacity, transform) {
+    if (!block) return;
     block.style.transition = 'opacity 1.5s, transform 1.5s';
     block.style.opacity = opacity;
     block.style.transform = transform;
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-    var articles = document.querySelectorAll('.main__article');
+function isMobileDevice() {
+    return typeof window.orientation !== "undefined" || navigator.userAgent.includes('IEMobile');
+}
 
-    articles.forEach((article, index) => {
-        var blocks = article.children;
-
-        Array.from(blocks).forEach((block) => {
-            changeStyle(block, 0, index % 2 === 0 ? 'translateX(-100%)' : 'translateX(100%)');
-        });
-    });
+// Inicialización del script
+document.addEventListener('DOMContentLoaded', () => {
+    initMenuToggle();
+    initArticleStyles();
+    initUpdateVisibility();
+    initIntersectionObserver();
+    initSmoothScroll();
+    initImageClickListeners();
+    initFitTextToContainer();
+    initTitleAnimation();
+    initPageReloadCheck();
+    initMobileOrientationLock();
 });
 
-function updateVisibility() {
-    var articles = document.querySelectorAll('.main__article');
-    var scrollTop = window.scrollY || document.documentElement.scrollTop;
-    var lastArticle = articles[articles.length - 1];
-    var lastArticleTop = lastArticle.offsetTop;
+window.addEventListener('load', () => {
+    initMenuItemsFlex();
+});
 
-    var maxVisibility = 0;
-    var mostVisibleArticle = null;
+// Funciones principales
 
-    var isSpecialResolution = window.matchMedia(`screen and (max-width: ${MAX_WIDTH}px), screen and (max-height: ${MAX_HEIGHT}px)`).matches;
-
-    articles.forEach((article) => {
-        var articlePosition = article.getBoundingClientRect();
-        var visibility = Math.max(0, Math.min(articlePosition.bottom, window.innerHeight) - Math.max(articlePosition.top, 0));
-
-        if (visibility > maxVisibility) {
-            maxVisibility = visibility;
-            mostVisibleArticle = article;
-        }
+function initMenuToggle() {
+    const menuToggle = document.getElementById('menu-toggle');
+    if (!menuToggle) return;
+    menuToggle.addEventListener('change', () => {
+        document.body.style.overflow = menuToggle.checked ? 'hidden' : '';
     });
+}
+
+function initArticleStyles() {
+    const articles = document.querySelectorAll('.main__article');
+    if (!articles.length) return;
 
     articles.forEach((article, index) => {
-        var blocks = article.children;
-
-        Array.from(blocks).forEach((block) => {
-            if (isSpecialResolution) {
-                if (article === mostVisibleArticle && maxVisibility > 0) {
-                    changeStyle(block, 1, 'translateX(0)');
-                }
-            } else {
-                if (article === mostVisibleArticle && maxVisibility > 0) {
-                    changeStyle(block, 1, 'translateX(0)');
-                } else if (index === articles.length - 1) {
-                    if (scrollTop < lastArticleTop) {
-                        changeStyle(block, 0, 'translateX(100%)');
-                    }
-                } else {
-                    changeStyle(block, 0, index % 2 === 0 ? 'translateX(-100%)' : 'translateX(100%)');
-                }
-            }
+        const blocks = Array.from(article.children);
+        blocks.forEach(block => {
+            changeStyle(block, 0, index % 2 === 0 ? 'translateX(-100%)' : 'translateX(100%)');
         });
     });
 }
 
-window.addEventListener('load', updateVisibility);
-window.addEventListener('scroll', updateVisibility);
+function initUpdateVisibility() {
+    const articles = document.querySelectorAll('.main__article');
+    if (!articles.length) return;
 
-document.addEventListener("DOMContentLoaded", function () {
-    const observerOptions = {
-        threshold: 0.1
+    const updateVisibility = () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const lastArticle = articles[articles.length - 1];
+        const lastArticleTop = lastArticle ? lastArticle.offsetTop : 0;
+
+        let maxVisibility = 0;
+        let mostVisibleArticle = null;
+
+        const isSpecialResolution = window.matchMedia(
+            `screen and (max-width: ${MAX_WIDTH}px), screen and (max-height: ${MAX_HEIGHT}px)`
+        ).matches;
+
+        articles.forEach(article => {
+            const articlePosition = article.getBoundingClientRect();
+            const visibility = Math.max(
+                0,
+                Math.min(articlePosition.bottom, window.innerHeight) -
+                    Math.max(articlePosition.top, 0)
+            );
+
+            if (visibility > maxVisibility) {
+                maxVisibility = visibility;
+                mostVisibleArticle = article;
+            }
+        });
+
+        articles.forEach((article, index) => {
+            const blocks = Array.from(article.children);
+            blocks.forEach(block => {
+                if (isSpecialResolution) {
+                    if (article === mostVisibleArticle && maxVisibility > 0) {
+                        changeStyle(block, 1, 'translateX(0)');
+                    }
+                } else {
+                    if (article === mostVisibleArticle && maxVisibility > 0) {
+                        changeStyle(block, 1, 'translateX(0)');
+                    } else if (index === articles.length - 1) {
+                        if (scrollTop < lastArticleTop) {
+                            changeStyle(block, 0, 'translateX(100%)');
+                        }
+                    } else {
+                        changeStyle(block, 0, index % 2 === 0 ? 'translateX(-100%)' : 'translateX(100%)');
+                    }
+                }
+            });
+        });
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    window.addEventListener('scroll', updateVisibility);
+    updateVisibility();
+}
+
+function initIntersectionObserver() {
+    const observerOptions = { threshold: 0.1 };
+    const menuItems = document.querySelectorAll('.main__menu-item');
+    if (!menuItems.length) return;
+
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            } else {
-                entry.target.classList.remove('visible');
-            }
+            entry.target.classList.toggle('visible', entry.isIntersecting);
         });
     }, observerOptions);
 
-    const menuItems = document.querySelectorAll('.main__menu-item');
-    menuItems.forEach(item => {
-        observer.observe(item);
-    });
-});
+    menuItems.forEach(item => observer.observe(item));
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-    const smoothScroll = (target) => {
+function initSmoothScroll() {
+    const smoothScroll = target => {
         const offsetTop = target.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.2;
-        window.scrollTo({
-            top: offsetTop,
-            behavior: "smooth"
-        });
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
     };
 
-    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+    const anchors = document.querySelectorAll('a[href*="#"]');
+    if (!anchors.length) return;
+
+    anchors.forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetPathname = new URL(this.href).pathname;
             if (targetPathname === window.location.pathname) {
@@ -134,94 +165,97 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     handleSmoothScrollOnLoad();
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    const images = document.querySelectorAll("img");
-
-    images.forEach(function(img) {
-        if (!img.closest("a")) {
-            img.onclick = function() {
-                window.open(img.src, '_blank');
-            };
-        }
-    });
-});
-
-window.onload = function () {
-    var lis = document.querySelectorAll('.main__menu-item');
-    var maxWidth = 0;
-
-    for (var i = 0; i < lis.length; i++) {
-        var width = lis[i].offsetWidth;
-        if (width > maxWidth) {
-            maxWidth = width;
-        }
-    }
-
-    for (var i = 0; i < lis.length; i++) {
-        lis[i].style.flex = '1 1 ' + maxWidth + 'px';
-    }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const containers = document.querySelectorAll('.main__text-content');
-    containers.forEach(container => fitTextToContainer(container));
+function initImageClickListeners() {
+    const images = document.querySelectorAll("img");
+    if (!images.length) return;
 
+    images.forEach(img => {
+        if (!img.closest("a")) {
+            img.addEventListener('click', () => {
+                window.open(img.src, '_blank');
+            });
+        }
+    });
+}
+
+function initFitTextToContainer() {
+    const containers = document.querySelectorAll('.main__text-content');
+    if (!containers.length) return;
+
+    const fitTextToContainer = container => {
+        const headings = container.querySelectorAll('.main__heading');
+        const paragraphs = container.querySelectorAll('.main__paragraph');
+
+        if (!headings.length || !paragraphs.length) return;
+
+        let headingFontSize = HEADING_INITIAL_FONT_SIZE;
+        let paragraphFontSize = PARAGRAPH_INITIAL_FONT_SIZE;
+
+        headings.forEach(heading => heading.style.fontSize = `${headingFontSize}px`);
+        paragraphs.forEach(paragraph => paragraph.style.fontSize = `${paragraphFontSize}px`);
+
+        while (
+            container.scrollHeight > container.clientHeight ||
+            container.scrollWidth > container.clientWidth
+        ) {
+            headingFontSize -= 1;
+            paragraphFontSize = (headingFontSize / HEADING_INITIAL_FONT_SIZE) * PARAGRAPH_INITIAL_FONT_SIZE;
+            headings.forEach(heading => heading.style.fontSize = `${headingFontSize}px`);
+            paragraphs.forEach(paragraph => paragraph.style.fontSize = `${paragraphFontSize}px`);
+            if (headingFontSize <= 0 || paragraphFontSize <= 0) break;
+        }
+    };
+
+    containers.forEach(container => fitTextToContainer(container));
     window.addEventListener('resize', () => {
         containers.forEach(container => fitTextToContainer(container));
     });
-});
-
-function fitTextToContainer(container) {
-    const headings = container.querySelectorAll('.main__heading');
-    const paragraphs = container.querySelectorAll('.main__paragraph');
-
-    if (headings.length === 0 || paragraphs.length === 0) return;
-
-    const headingInitialFontSize = 46;
-    const paragraphInitialFontSize = 28;
-
-    let headingFontSize = headingInitialFontSize;
-    let paragraphFontSize = paragraphInitialFontSize;
-
-    headings.forEach(heading => heading.style.fontSize = headingFontSize + 'px');
-    paragraphs.forEach(paragraph => paragraph.style.fontSize = paragraphFontSize + 'px');
-
-    while (
-        container.scrollHeight > container.clientHeight ||
-        container.scrollWidth > container.clientWidth
-    ) {
-        headingFontSize -= 1;
-        paragraphFontSize = (headingFontSize / headingInitialFontSize) * paragraphInitialFontSize;
-        headings.forEach(heading => heading.style.fontSize = headingFontSize + 'px');
-        paragraphs.forEach(paragraph => paragraph.style.fontSize = paragraphFontSize + 'px');
-        if (headingFontSize <= 0 || paragraphFontSize <= 0) break;
-    }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    function animateTitle(text, speed) {
+function initTitleAnimation() {
+    const animateTitle = (text, speed) => {
         let displayText = text + " ";
-        function moveTitle() {
+        const moveTitle = () => {
             document.title = displayText;
             displayText = displayText.substring(1) + displayText.charAt(0);
             setTimeout(moveTitle, speed);
-        }
+        };
         moveTitle();
-    }
+    };
 
-    // Llamada al método con el texto y la velocidad deseada
     animateTitle(document.title, TITLE_SPEED_MS);
-});
+}
 
-document.addEventListener("DOMContentLoaded", function() {
+function initPageReloadCheck() {
     const lastFetchKey = 'lastFetch';
     const now = new Date().getTime();
     const lastFetch = localStorage.getItem(lastFetchKey) || 0;
 
-    if ((now - lastFetch) > RELOAD_PAGE_H * 3600000) { // 24 horas en milisegundos
+    if ((now - lastFetch) > RELOAD_PAGE_H * 3600000) {
         localStorage.setItem(lastFetchKey, now);
-        window.location.reload(true); // Forzar recarga desde el servidor
+        window.location.reload(true);
     }
-});
+}
+
+function initMobileOrientationLock() {
+    if (isMobileDevice() && 'orientation' in screen && typeof screen.orientation.lock === 'function') {
+        screen.orientation.lock("portrait").catch(() => {});
+    }
+}
+
+function initMenuItemsFlex() {
+    const menuItems = document.querySelectorAll('.main__menu-item');
+    if (!menuItems.length) return;
+
+    let maxWidth = 0;
+    menuItems.forEach(item => {
+        const width = item.offsetWidth;
+        if (width > maxWidth) maxWidth = width;
+    });
+
+    menuItems.forEach(item => {
+        item.style.flex = `1 1 ${maxWidth}px`;
+    });
+}

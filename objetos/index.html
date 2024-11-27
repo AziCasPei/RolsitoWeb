@@ -6,26 +6,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="Completa tu servidor de rol con un inventario de objetos para tu servidor de rol o rpg en Discord."/>
-    <meta name="robots" content="noarchive">
     <meta property="og:title" content="RolsitoBot - Objetos"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://lh3.googleusercontent.com/pw/AP1GczO2Z4R-36jz70Qt5cJcp90LCoe1wEFaOQbmglczr3hJ8WHDvTEvZJUZnUUUuG6X4bFNskSwqXMAalMEs0Hy_1r1qdky1PtDbrXA9WE7H_d_MdDbfEcLn-FOaTO2PjhMhTiCJKqCoycvXqkaucFuqYj2=w886-h886-s-no?authuser=0"/>
     <meta property="og:description" content="Añade un completo inventario de objetos a tu servidor de rol en Discord con RolsitoBot. Gestiona y personaliza objetos para mejorar la experiencia de juego."/>
     <meta property="og:site_name" content="RolsitoBot"/>
     <meta property="og:locale" content="es_ES"/>
-    <meta property="og:url" content="https://azicaspei.github.io/RolsitoWeb/"/>
+    <meta property="og:url" content="https://rolsitobot.es/index.html"/>
     <title>RolsitoBot - Crea y Gestiona Objetos en Discord</title>
-    <link rel="stylesheet" href="./styles.css"/>
-    <link rel="icon" type="image/png" href="./Imagenes/logoRolsito.png">
+    <link rel="stylesheet" href="/styles.css"/>
+    <link rel="icon" type="image/png" href="/Imagenes/logoRolsito.png">
 </head>
 
 <body>
     <header class="header">
         <div class="header__container">
-            <h1 class="header__title">
-                <a href="./objetos.html" class="header__title-link"><img class="header__logo"
-                        src="./Imagenes/logoRolsito.png" alt="RolsitoBot" /></a>
-            </h1>
+            <span class="header__title">
+                <a href="./" class="header__title-link"><img class="header__logo"
+                        src="/Imagenes/logoRolsito.png" alt="RolsitoBot" /></a></span>
 
             <input type="checkbox" id="menu-toggle" class="header__menu-toggle" />
             <label for="menu-toggle" class="header__menu-icon">☰</label>
@@ -33,22 +31,22 @@
             <nav class="header__nav">
                 <ul class="header__menu">
                     <li class="header__menu-item">
-                        <a href="./index.html" class="header__menu-link">Introducción</a>
+                        <a href="/" class="header__menu-link">Introducción</a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="./personajes.html" class="header__menu-link">Personajes</a>
+                        <a href="/personajes/" class="header__menu-link">Personajes</a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="./objetos.html" class="header__menu-link">Objetos</a>
+                        <a href="/objetos/" class="header__menu-link">Objetos</a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="./economía.html" class="header__menu-link">Economía</a>
+                        <a href="/economia/" class="header__menu-link">Economía</a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="./dados.html" class="header__menu-link">Dados</a>
+                        <a href="/dados/" class="header__menu-link">Dados</a>
                     </li>
                     <li class="header__menu-item">
-                        <a href="./otros.html" class="header__menu-link">Otros</a>
+                        <a href="/otros/" class="header__menu-link">Otros</a>
                     </li>
                 </ul>
             </nav>
@@ -92,38 +90,18 @@
                 <div class="main__text-content">
                     <h2 class="main__heading">Creación de objetos en Discord: /crear</h2>
                     <p class="main__paragraph">
-                        Podemos tener infinitos <strong>objetos</strong> en nuestro
-                        servidor, pero primero hay que crearlos a través del comando
-                        <code>/crear</code>. Podemos crear
-                        objetos simples o muy complejos según los campos que
-                        rellenamos.<br />
-                        El campo <strong>equipable</strong> determina si el objeto se
-                        puede equipar o no. Por ejemplo, una armadura sería equipable
-                        <code>True</code>, mientras que una
-                        poción sería
-                        <code>False</code>.<br />
-                        El campo
-                        <strong><a href="#ranuras-objetos" class="text--wave">ranura</a></strong> hemos de
-                        crearlo previamente y se refiere a que ranura ocupa en el
-                        inventario del personaje. Por ejemplo,
-                        <code>mano_derecha</code> o
-                        <code>cabeza</code>.<br />
-                        El número de <strong>usos</strong> se refiere a cuantas veces se
-                        puede usar o consumir el objeto. Por ejemplo, una poción tendría 1
-                        uso, pero una espada podría usarse 25 veces antes de romperse y
-                        desaparecer del inventario.<br />
-                        Podemos añadir una <strong>imagen</strong> al objeto insertando
-                        una <span class="main__text-content--escape">URL</span> en el
-                        campo <code>imagen</code>.<br />
+                        Podemos tener infinitos <strong>objetos</strong> en nuestro servidor, pero primero hay que crearlos a través del comando <code>/crear</code>. Podemos crear objetos simples o muy complejos según los campos que rellenamos.<br>
+                        El campo <strong>equipable</strong> determina si el objeto se puede equipar o no. Por ejemplo, una armadura sería equipable <code>True</code>, mientras que una poción sería <code>False</code>.<br>
+                        El campo <strong><a href="#ranuras-objetos" class="text--wave">ranura</a></strong> hemos de crearlo previamente y se refiere a que ranura ocupa en el
+                        inventario del personaje. Por ejemplo, <code>mano_derecha</code> o
+                        <code>cabeza</code>.<br>
+                        El número de <strong>usos</strong> se refiere a cuantas veces se puede usar o consumir el objeto. Por ejemplo, una poción tendría 1 uso, pero una espada podría usarse 25 veces antes de romperse y desaparecer del inventario.<br>
+                        Podemos añadir una <strong>imagen</strong> al objeto insertando una <span class="main__text-content--escape">URL</span> en el campo <code>imagen</code>.<br>
                         Es opcional, pero recomendable si pensamos crear muchos objetos,
-                        introducir los
-                        <strong class="main__text-content--escape">tipos</strong> del
-                        objeto. Los tipos mantienen los objetos ordenados y es más rápido
-                        identificarlos. Por ejemplo, los tipos de un arco podrían ser
-                        <code>Arma, Arma a distancia, Arco</code>.<br />
+                        introducir los <strong class="main__text-content--escape">tipos</strong> del objeto. Los tipos mantienen los objetos ordenados y es más rápido identificarlos. Por ejemplo, los tipos de un arco podrían ser <code>Arma, Arma a distancia, Arco</code>.<br>
                     </p>
                 </div>
-                <img loading="lazy" src="./Imagenes/objetos1.webp" alt="Guía sobre la creación de objetos en Discord con RolsitoBot" class="main__image" />
+                <img loading="lazy" src="/Imagenes/objetos1.webp" alt="Guía sobre la creación de objetos en Discord con RolsitoBot" class="main__image" />
             </article>
 
             <article id="creacion-objetos2" class="main__article">
@@ -154,7 +132,7 @@
                     <p></p>
                 </div>
 
-                <img loading="lazy" src="./Imagenes/objetos2.webp" alt="Tutorial de creación de objetos avanzados con RolsitoBot en Discord" class="main__image" />
+                <img loading="lazy" src="/Imagenes/objetos2.webp" alt="Tutorial de creación de objetos avanzados con RolsitoBot en Discord" class="main__image" />
             </article>
 
             <article id="creacion-objetos3" class="main__article">
@@ -164,7 +142,7 @@
                     De igual manera, podemos determinar si un objeto se puede descomponer o no con <code>materiales_descomponer</code>.<br>También podemos determinar la cantidad de objetos que se fabrica, o la cantidad de objetos necesaria para descomponer los objetos con <code>materiales_cantidad</code>. Por ejemplo, para descomponer <code>flechas</code> en <code>madera</code> serán necesarias <code>10 flechas</code>.<br>
                     <code>Ataque</code> y <code>Defensa</code> determinan el ataque o defensa que incurrirá en las tiradas si el objeto está equipado. Puede ser un valor fijo o una tirada. Por ejemplo: <code>3d6 + 2dfuerza</code>.</p>
                 </div>
-                <img loading="lazy" src="./Imagenes/objetos3.webp" alt="Cómo crear objetos avanzados en Discord con RolsitoBot" class="main__image" />
+                <img loading="lazy" src="/Imagenes/objetos3.webp" alt="Cómo crear objetos avanzados en Discord con RolsitoBot" class="main__image" />
             </article>
 
             <article id="permisos-objetos" class="main__article">
@@ -174,7 +152,7 @@
                         Con RolsitoBot podemos configurar los objetos para que puedan ser
                         equipados, comprados, vendidos, fabricados o descompuestos por una
                         clase o profesión definida en los
-                        <a href="./personajes.html#atributos-personajes" class="text--wave">atributos</a>. Para
+                        <a href="/personajes/index.html#atributos-personajes" class="text--wave">atributos</a>. Para
                         ello, a la hora de crear el objeto usamos los campos
                         <code>equipar_permisos</code>,
                         <code>comprar_permisos</code>,
@@ -191,7 +169,7 @@
                         <code>grimorios</code>.
                     </p>
                 </div>
-                <img loading="lazy" src="./Imagenes/objetos4.webp" alt="Restricción de permisos para objetos en Discord con RolsitoBot" class="main__image" />
+                <img loading="lazy" src="/Imagenes/objetos4.webp" alt="Restricción de permisos para objetos en Discord con RolsitoBot" class="main__image" />
             </article>
 
             <article id="edicion-objetos" class="main__article">
@@ -216,7 +194,7 @@
                         nuevo nombre.
                     </p>
                 </div>
-                <img src="./Imagenes/objetos5.webp" alt="Cambiando el nombre de un objeto" class="main__image" />
+                <img src="/Imagenes/objetos5.webp" alt="Cambiando el nombre de un objeto" class="main__image" />
             </article>
 
             <article id="ranuras-objetos" class="main__article">
@@ -245,7 +223,7 @@
                         <code>arma</code> sí.
                     </p>
                 </div>
-                <img src="./Imagenes/objetos6.webp" alt="Configurando las ranuras de objetos" class="main__image" />
+                <img src="/Imagenes/objetos6.webp" alt="Configurando las ranuras de objetos" class="main__image" />
             </article>
 
             <article id="inventario-objetos" class="main__article">
@@ -257,7 +235,7 @@
                         personajes reciben con el comando
                         <code>/inventario</code>.<br />
                         Sólo podemos ver el inventario de nuestros personajes
-                        <a href="./personajes.html#revisar-personajes" class="text--wave">aprobados</a>.<br />
+                        <a href="/personajes/index.html#revisar-personajes" class="text--wave">aprobados</a>.<br />
                         En el inventario podemos usar el botón
                         <strong class="main__text-content--escape">Historial</strong> que
                         nos muestra los últimos objetos consumidos, comprados, fabricados
@@ -268,7 +246,7 @@
                         todo el servidor.
                     </p>
                 </div>
-                <img src="./Imagenes/objetos7.webp" alt="Inventario completo" class="main__image" />
+                <img src="/Imagenes/objetos7.webp" alt="Inventario completo" class="main__image" />
             </article>
             <article id="listar-objetos" class="main__article">
                 <div class="main__text-content">
@@ -277,7 +255,7 @@
                     En cambio con el comando <code>/embed</code> nos muestra sólo el objeto, sin el inventario y sin los botones para interactuar. Los objetos consultados con este comando no se borran al buscar uno nuevo, lo que lo hace ideal para mantener y mostrar objetos en un canal a modo de <strong>armería</strong>, por ejemplo.
                     </p>
                 </div>
-                <img src="./Imagenes/objetos8.webp" alt="Viendo una lista de todos los objetos separados por tipo" class="main__image" />
+                <img src="/Imagenes/objetos8.webp" alt="Viendo una lista de todos los objetos separados por tipo" class="main__image" />
             </article>
         </section>
     </main>
@@ -290,20 +268,20 @@
                     <li class="footer__menu-item">
                         <a href="https://discord.gg/r8r7CfT93h" class="footer__menu-link" title="Visita nuestro Discord"
                             target="_blank">
-                            <img class="footer__menu-logo" src="./Imagenes/logoDiscord.png" alt="Discord" />
+                            <img class="footer__menu-logo" src="/Imagenes/logoDiscord.png" alt="Discord" />
                         </a>
                     </li>
                     <li class="footer__menu-item">
                         <a href="https://www.youtube.com/@RolsitoBot" class="footer__menu-link"
                             title="Visita nuestro canal de YouTube" target="_blank">
-                            <img class="footer__menu-logo" src="./Imagenes/logoYoutube.png" alt="YouTube" />
+                            <img class="footer__menu-logo" src="/Imagenes/logoYoutube.png" alt="YouTube" />
                         </a>
                     </li>
                     <li class="footer__menu-item">
                         <a href="https://discord.com/api/oauth2/authorize?client_id=1008731076119769199&permissions=8&scope=bot"
                             class="footer__menu-link" title="Invita a nuestro bot a tu servidor de Discord"
                             target="_blank">
-                            <img class="footer__menu-logo" src="./Imagenes/logoRolsito.png" alt="Bot" />
+                            <img class="footer__menu-logo" src="/Imagenes/logoRolsito.png" alt="Bot" />
                         </a>
                     </li>
                 </ul>
@@ -311,7 +289,7 @@
         </div>
     </footer>
 
-    <script src="./script.js"></script>
+    <script src="/script.js"></script>
 </body>
 
 </html>
