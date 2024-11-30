@@ -79,9 +79,9 @@ export default {
         new MiniCssExtractPlugin({
             filename: 'assets/[name].[contenthash].css', // Genera CSS con el mismo nombre que el original
         }),
-        ...glob.sync('./*.html').map(file => new HtmlWebpackPlugin({
+        ...glob.sync('./**/*.html').map(file => new HtmlWebpackPlugin({
             template: file,
-            filename: path.basename(file),
+            filename: path.relative('.', file),
             inject: false
         })),
         {
