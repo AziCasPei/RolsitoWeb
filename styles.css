@@ -495,9 +495,9 @@ screen and (max-height: 555px) {
   }
 
   .header__menu-link {
-    font-size: clamp(16px, 3ch, 32px);
-    padding-top: 2.75vh;
-    padding-bottom: 2.75vh;
+    font-size: clamp(16px, 3dvh, 32px);
+    padding-top: 2.75dvh;
+    padding-bottom: 2.75dvh;
   }
 
   .main__title {
