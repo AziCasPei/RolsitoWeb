@@ -1,3 +1,5 @@
+import ScreenOrientation from 'screen-orientation';
+
 // Constantes de configuración
 const MAX_WIDTH = 1040;
 const MAX_HEIGHT = 555;
@@ -14,10 +16,6 @@ function changeStyle(block, opacity, transform) {
     block.style.transform = transform;
 }
 
-function isMobileDevice() {
-    return typeof window.orientation !== "undefined" || navigator.userAgent.includes('IEMobile');
-}
-
 // Inicialización del script
 document.addEventListener('DOMContentLoaded', () => {
     initMenuToggle();
@@ -29,8 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initFitTextToContainer();
     initTitleAnimation();
     initPageReloadCheck();
-    initMobileOrientationLock();
+    lockOrientation();
 });
+
+document.addEventListener('click', lockOrientation);
 
 window.addEventListener('load', () => {
     initMenuItemsFlex();
@@ -79,7 +79,7 @@ function initUpdateVisibility() {
             const visibility = Math.max(
                 0,
                 Math.min(articlePosition.bottom, window.innerHeight) -
-                    Math.max(articlePosition.top, 0)
+                Math.max(articlePosition.top, 0)
             );
 
             if (visibility > maxVisibility) {
@@ -239,10 +239,13 @@ function initPageReloadCheck() {
     }
 }
 
-function initMobileOrientationLock() {
-    if (isMobileDevice() && 'orientation' in screen && typeof screen.orientation.lock === 'function') {
-        screen.orientation.lock("portrait").catch(() => {});
-    }
+function lockOrientation() {
+    const orientation = new ScreenOrientation();
+    orientation.lock('portrait').then(() => {
+        console.log("Orientation locked to portrait mode.");
+    }).catch((err) => {
+        console.error("Error locking orientation:", err);
+    });
 }
 
 function initMenuItemsFlex() {
