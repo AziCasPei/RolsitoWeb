@@ -243,35 +243,10 @@ function lockOrientation() {
             })
             .catch((err) => {
                 console.error("Error locking orientation:", err);
-                applyCssOrientationFix();
             });
     } else {
         console.warn("Screen orientation lock API is not supported on this device.");
-        applyCssOrientationFix();
     }
-}
-
-function applyCssOrientationFix() {
-    const orientationAngle = screen.orientation.angle || window.orientation;
-
-    if (orientationAngle === 0 || orientationAngle === 180) {
-        // Retrato
-        document.body.style.transform = "none";
-        document.body.style.width = "100%";
-        document.body.style.height = "100%";
-        document.body.style.position = "fixed";
-    } else if (orientationAngle === 90 || orientationAngle === -90) {
-        // Paisaje
-        document.body.style.transform = "rotate(-90deg)";
-        document.body.style.width = `${window.innerHeight}px`;
-        document.body.style.height = `${window.innerWidth}px`;
-        document.body.style.position = "fixed";
-        document.body.style.top = `${(window.innerWidth - window.innerHeight) / 2}px`;
-        document.body.style.left = `${(window.innerHeight - window.innerWidth) / 2}px`;
-        document.body.style.transformOrigin = "center";
-    }
-
-    window.addEventListener('resize', applyCssOrientationFix);
 }
 
 function initMenuItemsFlex() {
