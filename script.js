@@ -5,6 +5,7 @@ const TITLE_SPEED_MS = 200;
 const RELOAD_PAGE_H = 2;
 const HEADING_INITIAL_FONT_SIZE = 46;
 const PARAGRAPH_INITIAL_FONT_SIZE = 28;
+const MENU_ITEM_INITIAL_FONT_SIZE = 22; // Nuevo tamaño inicial para los elementos de menú
 
 // Funciones auxiliares
 function changeStyle(block, opacity, transform) {
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTitleAnimation();
     initPageReloadCheck();
     lockOrientation();
+    setupAnchorLinks();
 });
 
 window.addEventListener('load', () => {
@@ -178,7 +180,7 @@ function initImageClickListeners() {
 
 function initFitTextToContainer() {
     const containers = document.querySelectorAll('.main__text-content');
-    if (!containers.length) return;
+    const menuItems = document.querySelectorAll('.main__menu-item');
 
     const fitTextToContainer = container => {
         const headings = container.querySelectorAll('.main__heading');
@@ -204,9 +206,25 @@ function initFitTextToContainer() {
         }
     };
 
+    const fitMenuItemToContainer = item => {
+        let menuItemFontSize = MENU_ITEM_INITIAL_FONT_SIZE;
+        item.style.fontSize = `${menuItemFontSize}px`;
+
+        const parent = item.parentElement;
+
+        while (item.scrollWidth > parent.clientWidth) {
+            menuItemFontSize -= 1;
+            item.style.fontSize = `${menuItemFontSize}px`;
+            if (menuItemFontSize <= 0) break;
+        }
+    };
+
     containers.forEach(container => fitTextToContainer(container));
+    menuItems.forEach(item => fitMenuItemToContainer(item));
+
     window.addEventListener('resize', () => {
         containers.forEach(container => fitTextToContainer(container));
+        menuItems.forEach(item => fitMenuItemToContainer(item));
     });
 }
 
@@ -247,6 +265,20 @@ function lockOrientation() {
     } else {
         console.warn("Screen orientation lock API is not supported on this device.");
     }
+}
+
+function setupAnchorLinks() {
+    document.querySelectorAll('.main__menu-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault(); // Previene el comportamiento predeterminado del enlace
+            const targetId = this.getAttribute('href').substring(1); // Obtén el ID del destino
+            const targetElement = document.getElementById(targetId); // Encuentra el elemento de destino
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' }); // Desplázate suavemente al elemento de destino
+                history.pushState(null, null, `#${targetId}`); // Actualiza la URL con el ancla
+            }
+        });
+    });
 }
 
 function initMenuItemsFlex() {
