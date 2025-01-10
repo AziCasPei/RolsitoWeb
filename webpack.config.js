@@ -60,7 +60,7 @@ export default {
                 ],
             },
             {
-                test: /\.(webp|png)$/i,
+                test: /\.(webp|png|ico|svg)$/i,
                 type: 'asset/resource',
                 generator: {
                     filename: 'images/[name].[contenthash][ext][query]'
