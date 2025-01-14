@@ -465,7 +465,7 @@ code {
 screen and (max-height: 555px) {
   html {
     scroll-padding-top: 100px;
-    scroll-snap-type: none; /*KAROS*/
+    scroll-snap-type: none;
   }
 
   h1 {
