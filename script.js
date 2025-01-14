@@ -24,7 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initImageClickListeners();
     initFitTextToContainer();
-    initTitleAnimation();
+
+    // Detectar si es un bot
+    const isBot = /bot|crawl|slurp|spider/i.test(navigator.userAgent);
+    if (!isBot) {
+        initTitleAnimation();
+    }
+
     initPageReloadCheck();
     lockOrientation();
     setupAnchorLinks();
