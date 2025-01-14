@@ -397,6 +397,12 @@ code {
   height: 7.5em;
 }
 
+.footer__text-container {
+  position: relative;
+  width: 100%;
+  height: 2.5em;
+}
+
 .footer__text {
   font-size: 1.25em;
   font-family: Tahoma;
@@ -406,6 +412,58 @@ code {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.footer__text:first-child {
+  animation: fadeInOutA 5s infinite;
+  opacity: 1;
+}
+
+.footer__text:last-child {
+  animation: fadeInOutB 5s infinite;
+  opacity: 0;
+}
+
+@keyframes fadeInOutA {
+
+  0%,
+  25% {
+    opacity: 1;
+  }
+
+  25%,
+  50% {
+    opacity: 0;
+  }
+
+  50%,
+  75% {
+    opacity: 0;
+  }
+
+}
+
+@keyframes fadeInOutB {
+
+  0%,
+  25% {
+    opacity: 0;
+  }
+
+  50%,
+  75% {
+    opacity: 1;
+  }
+
+  75%,
+  100% {
+    opacity: 0;
+  }
+
 }
 
 .footer__nav {
